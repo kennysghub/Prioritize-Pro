@@ -1,0 +1,17 @@
+{
+  "name": "grpc-todo",
+  "version": "1.0.0",
+  "description": "To-Do App with gRPC unary, client, server, and bi-directional streaming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.17",
+    "@grpc/proto-loader": "^0.7.7",
+    "grpseek": "^1.4.4"
+  }
+}
