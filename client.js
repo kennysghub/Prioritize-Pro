@@ -5,7 +5,7 @@ const grpcObject = grpc.loadPackageDefinition(packageDef);
 const todoPackage = grpcObject.todoPackage;
 const text = process.argv[2];
 // let text;
-const client = new todoPackage.Todo('localhost:40000', grpc.credentials.createInsecure() );
+const client = new todoPackage.Todo('localhost:3300', grpc.credentials.createInsecure() );
 // const input = document.getElementById('input');
 // const button = document.getElementById('submit');
 
@@ -20,10 +20,10 @@ client.createTodo({
     console.log("Received from server " + JSON.stringify(response))
 });
 
-client.readTodos({}, (err, response)=> {
-    // console.log("Received from server" + JSON.stringify(response))
-    response.items.forEach(i => console.log(i.id, "->", i.text))
-});
+// client.readTodos({}, (err, response)=> {
+//      console.log("Received from server" + JSON.stringify(response))
+//     response.items.forEach(i => console.log( i.text))
+// });
 
 const call = client.readTodosStream();
 call.on("data", item => {
