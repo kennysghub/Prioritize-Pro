@@ -5,8 +5,10 @@ package todoPackage;
 service Todo {
     rpc createTodo (TodoItem) returns (TodoItem);
     rpc readTodos (voidNoParams) returns (TodoItems);
-    rpc readTodosStream(voidNoParams) returns (stream TodoItem);
-
+    // Server-to-Client streaming , (stream from server)
+    rpc readTodosStream (voidNoParams) returns (stream TodoItem);
+    // Client-to-Server streaming, (stream from client)
+    rpc createMultipleTodos (TodoItems) returns (TodoItems);
 }
 
 message voidNoParams {};

@@ -4,8 +4,15 @@ const packageDef = protoLoader.loadSync('todo.proto', {});
 const grpcObject = grpc.loadPackageDefinition(packageDef);
 const todoPackage = grpcObject.todoPackage;
 const text = process.argv[2];
+// let text;
 const client = new todoPackage.Todo('localhost:40000', grpc.credentials.createInsecure() );
+// const input = document.getElementById('input');
+// const button = document.getElementById('submit');
 
+// button.addEventListener('click', () => {
+//     text = input;
+// })
+// console.log("CLIENT: ", client);
 client.createTodo({
     "id": -1,
     "text": text
@@ -14,8 +21,8 @@ client.createTodo({
 });
 
 client.readTodos({}, (err, response)=> {
-    console.log("Received from server" + JSON.stringify(response))
-    response.items.forEach(i => console.log(i.text))
+    // console.log("Received from server" + JSON.stringify(response))
+    response.items.forEach(i => console.log(i.id, "->", i.text))
 });
 
 const call = client.readTodosStream();
@@ -24,3 +31,4 @@ call.on("data", item => {
 })
 
 call.on("end", e => console.log("server done!"))
+
