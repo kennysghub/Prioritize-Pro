@@ -3,6 +3,6 @@
 FROM node:18-alpine
 WORKDIR /app
 COPY . .
-RUN yarn install --production
+RUN npm install
 CMD ["node", "server.js"]
-EXPOSE 40000
+EXPOSE 3300

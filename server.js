@@ -63,7 +63,7 @@ server.addService(todoPackage.Todo.service, {
   readTodosStream: readTodosStream
 });
 
-server.bindAsync('0.0.0.0:40000', grpc.ServerCredentials.createInsecure(), (error, port) => {
+server.bindAsync('0.0.0.0:3300', grpc.ServerCredentials.createInsecure(), (error, port) => {
   if (error) {
     console.error('Failed to bind:', error);
     return;
