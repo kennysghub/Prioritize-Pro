@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import * as grpc from '@grpc/grpc-js';
-import * as protoLoader from '@grpc/proto-loader';
-const packageDef = protoLoader.loadSync('../todo.proto', {});
-const grpcObject = grpc.loadPackageDefinition(packageDef);
-const todoPackage = grpcObject.todoPackage;
+// import * as grpc from '@grpc/grpc-js';
+// import * as protoLoader from '@grpc/proto-loader';
+// const packageDef = protoLoader.loadSync('../todo.proto', {});
+// const grpcObject = grpc.loadPackageDefinition(packageDef);
+// const todoPackage = grpcObject.todoPackage;
 // let text;
-const client = new todoPackage.Todo('localhost:3300', grpc.credentials.createInsecure() );
+// const client = new todoPackage.Todo('localhost:3300', grpc.credentials.createInsecure() );
 // const input = document.getElementById('input');
 // const button = document.getElementById('submit');
 
@@ -13,12 +13,12 @@ const client = new todoPackage.Todo('localhost:3300', grpc.credentials.createIns
 //     text = input;
 // })
 // console.log("CLIENT: ", client);
-client.createTodo({
-    "id": -1,
-    "text": text
-}, (err,response) => {
-    console.log("Received from server " + JSON.stringify(response))
-});
+// client.createTodo({
+//     "id": -1,
+//     "text": text
+// }, (err,response) => {
+//     console.log("Received from server " + JSON.stringify(response))
+// });
 
 
 export default function App() {

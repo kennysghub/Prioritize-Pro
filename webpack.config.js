@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-
+const webpack = require('webpack')
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -49,17 +49,31 @@ module.exports = {
     historyApiFallback: true,
     port: 8080,
     proxy: {
-      '**/*': 'http://localhost:3500',
+      '**/*': 'http://localhost:3300',
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new NodePolyfillPlugin()
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    }),
   ],
   resolve: {
     extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
-    fallback: { "path": require.resolve("path-browserify") }
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": require.resolve("path-browserify"),
+      "http2": false,
+      "dns": false,
+      "os": require.resolve("os-browserify/browser"),
+      "crypto": require.resolve("crypto-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      "zlib": require.resolve("browserify-zlib"),
+      "http": require.resolve("stream-http")
+    }
 },
 };
