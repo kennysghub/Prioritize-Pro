@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 module.exports = {
-  entry: './client.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -55,6 +56,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new NodePolyfillPlugin()
   ],
   resolve: {
     extensions: [ '.js', '.jsx', '.ts', '.tsx' ],

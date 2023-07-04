@@ -20,10 +20,10 @@ client.createTodo({
     console.log("Received from server " + JSON.stringify(response))
 });
 
-// client.readTodos({}, (err, response)=> {
-//      console.log("Received from server" + JSON.stringify(response))
-//     response.items.forEach(i => console.log( i.text))
-// });
+client.readTodos({}, (err, response)=> {
+     console.log("Received from server" + JSON.stringify(response))
+    response.items.forEach(i => console.log( i.text))
+});
 
 const call = client.readTodosStream();
 call.on("data", item => {
